@@ -1,16 +1,9 @@
 from bs4 import BeautifulSoup
-# import requests 
 import pandas as pd 
-#import urllib.parse
 import json 
 import time
 
 from selenium import webdriver
-# from selenium.webdriver.chrome.service import Service as ChromeService
-# from selenium.webdriver.common.by import By
-# from selenium.webdriver.common.keys import Keys
-# from selenium.webdriver.chrome.options import Options
-
 
 
 driver = webdriver.Chrome()
@@ -18,38 +11,22 @@ driver = webdriver.Chrome()
 website = "https://www.trulia.com/IL/Naperville/" #
 website2 = "https://www.trulia.com/IL/Naperville_p/" #
 website3 = "https://www.trulia.com/IL/Naperville/2_p/" 
-web = "https://www.trulia.com/for_sale/Hinsdale,IL/SINGLE-FAMILY_HOME_type/11_zm/"
+website35 = "https://www.trulia.com/for_sale/Hinsdale,IL/SINGLE-FAMILY_HOME_type/11_zm/"
 website4 = "https://www.trulia.com/for_sale/Evanston,IL/SINGLE-FAMILY_HOME_type/12_zm/"
 website5 = "https://www.trulia.com/for_sale/Northbrook,IL/APARTMENT,CONDO,COOP,SINGLE-FAMILY_HOME,TOWNHOUSE_type/price;d_sort/11_zm/"
 website6 = "https://www.trulia.com/for_sale/Schaumburg,IL/1p_beds/12_zm/"
 website7 = "https://www.trulia.com/for_sale/Palatine,IL/1p_beds/1p_sqft/SINGLE-FAMILY_HOME_type/12_zm/"
-websiteTest = "https://www.trulia.com/for_sale/Vernon_Hills,IL/1p_beds/1p_sqft/SINGLE-FAMILY_HOME_type/10_zm/"
-
+testWeb = "https://www.trulia.com/for_sale/Vernon_Hills,IL/1p_beds/1p_sqft/SINGLE-FAMILY_HOME_type/10_zm/"
 demoweb = "https://www.trulia.com/IA/Iowa_City/"
 
-# Use Selenium to navigate the webpage
 driver.get("https://www.trulia.com/IA/Cedar_Rapids/")
-
-# Wait for the page to load 
 time.sleep(25)
-
-# Extract the page source after it's fully loaded
 page_source = driver.page_source
-
 driver.quit()
 
 # # # !!!
 soup = BeautifulSoup(page_source, 'html.parser')
-
-
-
 #############
-# headers = ''
-# response = requests.get(website, headers=headers)
-# print(response)
-#soup = BeautifulSoup(response.text, 'html.parser')
-#############
-
 
 result = soup.find_all('li', {'class': "Grid__CellBox-sc-a8dff4e9-0 sc-84372ace-0 kloaJl kTTMdB"})
 len(result)
@@ -86,7 +63,6 @@ history = []
 time.sleep(25)
 import random ### STOP AT 39
 for url in all_links[0:40]: ## 
-    #home = 'https://www.trulia.com/home/2012-springside-dr-naperville-il-60565-4551229'
     driver = webdriver.Chrome()
     driver.get(url)
     time.sleep(random.uniform(20, 25))
